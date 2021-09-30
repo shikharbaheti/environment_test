@@ -19,6 +19,10 @@ class BooksController < ApplicationController
   def edit
   end
 
+  def delete
+    @book = Book.find(params[:id])
+  end
+
   # POST /books or /books.json
   def create
     @book = Book.new(book_params)
@@ -64,6 +68,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title)
+      params.require(:book).permit(:title, :price, :published, :author)
     end
 end
